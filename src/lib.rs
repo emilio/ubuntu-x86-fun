@@ -39,7 +39,7 @@ extern "C" {
     fn do_something() -> c_int;
 }
 
-fn main() {
-    let out = unsafe { do_something() };
-    assert_eq!(out, 0);
+#[no_mangle]
+pub unsafe extern "C" fn Servo_DoSomething() -> c_int {
+    do_something()
 }
