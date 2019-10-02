@@ -48,6 +48,17 @@ pub extern "C" fn Servo_GetGenericFoo(
     }
 }
 
+#[no_mangle]
+pub extern "C" fn AddRef(ptr: *mut c_void) {
+    println!("AddRef({:?})", ptr);
+}
+
+#[no_mangle]
+pub extern "C" fn Release(ptr: *mut c_void) {
+    println!("Release({:?})", ptr);
+}
+
+
 extern "C" {
     fn do_something() -> c_int;
 }
