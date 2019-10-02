@@ -11,10 +11,10 @@ fn main() {
 
     let out_dir = std::env::var_os("OUT_DIR").unwrap();
     let obj = PathBuf::from(&out_dir).join("t.o");
-    Command::new("/home/emilio/src/moz/ubuntu/gcc-8/usr/bin/gcc-8")
+    Command::new("g++")
         .arg("-m32")
         .arg("-fPIE")
-        .arg("-Os")
+        .arg("-O3")
         .arg("-c")
         .arg("-o")
         .arg(&obj)
