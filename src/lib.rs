@@ -26,8 +26,21 @@ pub extern "C" fn Servo_GetFoo(ptr: *mut c_void) -> Foo {
     }
 }
 
+#[repr(u8)]
+pub enum IterationCompositeOperation {
+    Foo,
+    Bar
+}
+
 #[no_mangle]
-pub extern "C" fn Servo_GetGenericFoo(ptr: *mut c_void) -> GenericFoo<Foreign> {
+pub extern "C" fn Servo_GetGenericFoo(
+    ptr: *mut c_void,
+    ptr2: *const Foreign,
+    ptr3: *const Foreign,
+    op: IterationCompositeOperation,
+    progress: f64,
+    iter: u64
+) -> GenericFoo<Foreign> {
     println!("{:?}", ptr);
     GenericFoo {
         ptr: ptr as *const _,
